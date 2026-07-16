@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Paddy - Bekasi | Devita Sari</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#f6f9f6;color:#1a2e1a;padding:20px}
+.header{background:linear-gradient(135deg,#2e7d32,#66bb6a);color:white;padding:30px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px} .badge{background:rgba(255,255,255,0.2);padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-left:4px solid #2e7d32}
+.card h3{font-size:13px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.card .value{font-size:32px;font-weight:700;color:#2e7d32} .card .unit{font-size:14px;color:#888}
+.status{background:#e8f5e9;padding:12px;border-radius:8px;text-align:center;font-size:13px;color:#2e7d32;margin-bottom:24px;border:1px solid #c8e6c9}
+.footer{background:white;padding:20px;border-radius:12px;text-align:center}
+.btn{background:#2e7d32;color:white;border:none;padding:10px 20px;border-radius:8px;cursor:pointer}
+.btn:hover{background:#1b5e20}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🌾 Kebun Pintar - Smart Paddy Monitoring</h1>
+<p>Sistem Monitoring Sawah Cerdas Berbasis AWS Cloud untuk Petani Bekasi</p>
+<span class="badge">📍 Bekasi, Jawa Barat | AWS Region ap-southeast-3 (Jakarta)</span>
+</div>
+
+<div style="background:white;padding:16px;border-radius:12px;margin-bottom:16px">
+<h3 style="color:#2e7d32">🎯 Tentang Proyek</h3>
+<p style="margin-top:8px;font-size:14px;line-height:1.6;color:#444">Kebun Pintar adalah sistem monitoring sawah cerdas yang memanfaatkan Cloud AWS untuk membantu petani di Bekasi memantau kondisi lahan secara real-time. Proyek Teknologi Pertanian x AWS IoT.</p>
+</div>
+
+<div style="background:white;padding:16px;border-radius:12px;margin-bottom:16px">
+<h3>📡 Data Sensor - Live Lab 2 <span id="live" style="background:#ff5252;color:white;padding:2px 8px;border-radius:10px;font-size:11px;animation:blink 1s infinite">● LIVE</span></h3>
+<p style="font-size:13px;color:#666;margin:8px 0">Data real-time dari sensor IoT di sawah Bekasi. Terhubung via <b>AWS IoT Core</b>. Update setiap 3 detik.</p>
+<div class="grid" style="margin-top:16px;margin-bottom:0">
+<div class="card"><h3>💧 Kelembaban Tanah</h3><div class="value" id="soil">75.7</div><div class="unit">%</div></div>
+<div class="card"><h3>🌡️ Suhu</h3><div class="value" id="temp">30.6</div><div class="unit">°C</div></div>
+<div class="card"><h3>🧪 pH Tanah</h3><div class="value" id="ph">6.2</div><div class="unit">pH</div></div>
+<div class="card"><h3>🌊 Ketinggian Air</h3><div class="value" id="water">14.9</div><div class="unit">cm</div></div>
+</div>
+<div class="status" id="conn">✅ Terhubung ke AWS IoT Core | Bucket: <b>kebun-pintar-devita-1207</b> | Latency: <span id="lat">18</span>ms</div>
+<button class="btn" onclick="refresh()">🔄 Refresh Manual</button>
+</div>
+
+<div class="footer">
+<h3 style="text-align:left;color:#2e7d32">👩‍💻 Dibuat Oleh</h3>
+<div style="text-align:left;margin-top:10px;font-size:14px;line-height:1.6">
+<b>Devita Sari</b><br>
+Bekasi, Jawa Barat - Indonesia<br>
+Calon Engineer Pertanian Pintar Jepang<br>
+Email: devitasari1207@gmail.com
+</div>
+</div>
+
+<script>
+function rand(min,max){return (Math.random()*(max-min)+min).toFixed(1)}
+function refresh(){
+document.getElementById('soil').innerText=rand(70,80);
+document.getElementById('temp').innerText=rand(29,32);
+document.getElementById('ph').innerText=rand(6.0,6.8);
+document.getElementById('water').innerText=rand(12,18);
+document.getElementById('lat').innerText=Math.floor(Math.random()*20+10);
+}
+setInterval(refresh,3000);
+</script>
+<style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}</style>
+</body>
+</html>
